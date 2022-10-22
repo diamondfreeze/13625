@@ -133,7 +133,7 @@ label start:
         jump game_over
 
     scene bg field
-    e "нет картошки"
+    e "нет картошки, представляешь?"
 
     show potato happy at left_move_in
 
