@@ -1,64 +1,54 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 207, in script call
-    call _gl_test
-  File "renpy/common/00gltest.rpy", line 390, in script
-    $ __gl_test()
-  File "renpy/common/00start.rpy", line 207, in script call
-    call _gl_test
-  File "renpy/common/00gltest.rpy", line 390, in script
-    $ __gl_test()
-  File "renpy/common/00gltest.rpy", line 390, in <module>
-    $ __gl_test()
-  File "renpy/common/00gltest.rpy", line 317, in _m1_00gltest__gl_test
-    _gl_performance_test()
-  File "renpy/common/00gltest.rpy", line 342, in _gl_performance_test
-    ui.interact(suppress_underlay=True, suppress_overlay=True)
-Exception: DirectSoundCreate8: No audio device found
+  File "game/script.rpy", line 135, in script
+    call screen hamster_cage
+  File "renpy/common/000statements.rpy", line 569, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/script.rpy", line 47, in transform
+    d.pos = (-100,-100,-100,-100)
+ValueError: too many values to unpack
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 331, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 662, in main
-    run(restart)
-  File "renpy/main.py", line 148, in run
-    renpy.execution.run_context(True)
-  File "renpy/execution.py", line 922, in run_context
-    context.run()
-  File "renpy/common/00start.rpy", line 207, in script call
-    call _gl_test
-  File "renpy/common/00gltest.rpy", line 390, in script
-    $ __gl_test()
-  File "renpy/common/00start.rpy", line 207, in script call
-    call _gl_test
-  File "renpy/common/00gltest.rpy", line 390, in script
-    $ __gl_test()
-  File "renpy/ast.py", line 928, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2245, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00gltest.rpy", line 390, in <module>
-    $ __gl_test()
-  File "renpy/common/00gltest.rpy", line 317, in _m1_00gltest__gl_test
-    _gl_performance_test()
-  File "renpy/common/00gltest.rpy", line 342, in _gl_performance_test
-    ui.interact(suppress_underlay=True, suppress_overlay=True)
+  File "game/script.rpy", line 135, in script
+    call screen hamster_cage
+  File "renpy/ast.py", line 2015, in execute
+    self.call("execute")
+  File "renpy/ast.py", line 2003, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "renpy/statements.py", line 278, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 569, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "renpy/exports.py", line 3136, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
   File "renpy/ui.py", line 298, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 3286, in interact
-    self.start()
-  File "renpy/display/core.py", line 2200, in start
-    renpy.audio.audio.init()
-  File "renpy/audio/audio.py", line 955, in init
-    renpysound.init(renpy.config.sound_sample_rate, 2, bufsize, False, renpy.config.equal_mono)
-  File "renpysound.pyx", line 390, in renpy.audio.renpysound.init
-  File "renpysound.pyx", line 98, in renpy.audio.renpysound.check_error
-Exception: DirectSoundCreate8: No audio device found
+  File "renpy/display/core.py", line 3337, in interact
+    scene_lists.replace_transient()
+  File "renpy/display/core.py", line 945, in replace_transient
+    self.remove(layer, tag, prefix=prefix)
+  File "renpy/display/core.py", line 1261, in remove
+    self.hide_or_replace(layer, remove_index, prefix)
+  File "renpy/display/core.py", line 1175, in hide_or_replace
+    d = oldsle.displayable._in_current_store()._hide(now - st, now - at, prefix)
+  File "renpy/display/screen.py", line 532, in _hide
+    c = d._hide(st, at, kind)
+  File "renpy/display/transform.py", line 646, in _hide
+    self.update_state()
+  File "renpy/display/transform.py", line 723, in update_state
+    fr = self.function(self, self.st, self.at)
+  File "game/script.rpy", line 47, in transform
+    d.pos = (-100,-100,-100,-100)
+  File "renpy/display/transform.py", line 358, in __set__
+    return setattr(instance.state, self.name, value)
+  File "renpy/display/transform.py", line 271, in set_pos
+    self.xpos, self.ypos = value
+ValueError: too many values to unpack
 
 Windows-7-6.1.7601-SP1
 Ren'Py 7.4.11.2266
 sadsad 1.0
-Sat Oct 22 17:15:09 2022
+Sat Oct 22 18:22:15 2022

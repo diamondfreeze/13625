@@ -3,9 +3,9 @@ errors listed below, and try again.
 
 
 File "game/script.rpy", line 82: invalid syntax
-            hide shroom hunter at truecenter
+            hide shroom
                        ^
     
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sat Oct 22 17:20:00 2022
+Sat Oct 22 17:41:52 2022

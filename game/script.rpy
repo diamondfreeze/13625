@@ -42,6 +42,11 @@
             obj.won = False
             obj.dead = True
         def transform(self,d,show_time,animate_time):
+            if self.nemesis.won:
+                self.x = -100
+                self.y = -100
+                d.pos = (self.x,self.y)
+                return
             x = self.x - self.nemesis.x
             y = self.y - self.nemesis.y
             step = 0.01
@@ -83,10 +88,10 @@
 
 
     player=Player(0.5,0.5,0.05,0.05,0.95,0.95)
-    winning_banner = Banner(0.1,0.1, player)
-    exit_trigger = Trigger(0.9,0.1, winning_banner,active=False)
-    control_trigger = Trigger(0.8,0.8,exit_trigger)
-    shroom = Enemy(0.2,0.2,player)
+    winning_banner = Banner(0.0,0.0, player)
+    exit_trigger = Trigger(0.7,0.5, winning_banner,active=False)
+    control_trigger = Trigger(0.4,0.2,exit_trigger)
+    shroom = Enemy(0.1,0.2,player)
     main_arena = Arena(player,
                        winning_banner,
                        exit_trigger,
